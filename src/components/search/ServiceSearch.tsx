@@ -8,8 +8,6 @@ import { ServiceListProps, ServiceSearchProps } from "types";
 const ServiceSearch: React.FC<ServiceSearchProps> = ({
   zoneName,
   zoneId,
-  searchType,
-  setSearchType,
 }) => {
   const [serviceList, setServiceList] = useState<ServiceListProps>([]);
   const [filterdServiceList, setFilteredServiceList] =
@@ -28,8 +26,7 @@ const ServiceSearch: React.FC<ServiceSearchProps> = ({
 
   return (
     <FullPageWrapper
-      onBackButtonClick={() => setSearchType("CLOSED")}
-      searchType={searchType}
+      headerTitle="جستجوی خدمات"
     >
       <div className="relative flex w-full items-center rounded-md shadow-sm">
         <div className="relative flex w-full flex-col justify-center">
@@ -43,7 +40,6 @@ const ServiceSearch: React.FC<ServiceSearchProps> = ({
         </div>
         <ZonePicker
           zoneName={zoneName}
-          onClick={() => setSearchType("CitySearch")}
         />
         <SearchResults results={filterdServiceList} zoneId={zoneId} />
       </div>

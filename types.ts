@@ -3,16 +3,16 @@ import { Dispatch, MouseEventHandler, SetStateAction } from "react";
 export type ServiceSearchProps = {
   zoneName: string;
   zoneId: string;
-  searchType: string;
-  setSearchType: (searchType: string) => void;
+  // searchType: string;
+  // setSearchType: (searchType: string) => void;
 };
 type zone = {
   zoneId: string;
   zoneName: string;
 };
 export type CitySearchProps = {
-  searchType: string;
-  setSearchType: (searchType: string) => void;
+  // searchType: string;
+  // setSearchType: (searchType: string) => void;
   setCurrentZone: (zone: zone) => void;
 };
 export type ZoneListProps = {
@@ -26,9 +26,9 @@ export type SearchProps = {
   setCurrentZone: (zone: zone) => void;
 };
 export type FullPageWrapperProps = {
-  onBackButtonClick: () => void;
+  // onBackButtonClick: () => void;
   children: string | JSX.Element | JSX.Element[];
-  searchType: string;
+  headerTitle: string;
 };
 export type SearchInputProps = {
   serviceList: {
@@ -43,7 +43,7 @@ export type ServiceListProps = {
 }[];
 export type ZonePickerProps = {
   zoneName: string;
-  onClick: MouseEventHandler<HTMLDivElement>;
+  // onClick: MouseEventHandler<HTMLDivElement>;
 };
 export type SearchResultsProps = {
   results: ServiceListProps;
@@ -55,15 +55,25 @@ export type SearchItemProps = {
   serviceName: string;
 };
 export type SearchHeaderProps = {
-  searchType: string;
-  onBackButtonClick: MouseEventHandler<HTMLButtonElement>;
+  headerTitle: string;
+  // onBackButtonClick: MouseEventHandler<HTMLButtonElement>;
 };
 export type CityProps = {
   zoneId: string;
   zoneName: string;
-  setCurrentZone: (zone: zone) => void;
-  setSearchType: (searchType: string) => void;
+  // setCurrentZone: (zone: zone) => void;
+  // setSearchType: (searchType: string) => void;
 };
-export type StaticSearchInputProps = {
+export type OutlineButtonProps = {
   onClick: MouseEventHandler<HTMLButtonElement>;
+};
+type ServiceData = {
+  zoneId: string;
+  serviceId: string;
+  text: string;
+}|null
+export type ServicePageProps = {
+  serviceId: string;
+  zoneId: string;
+  serviceData: ServiceData;
 };

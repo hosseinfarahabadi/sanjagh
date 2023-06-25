@@ -1,14 +1,20 @@
+import { useRouter } from "next/router";
 import { CityProps } from "types";
 
 const City: React.FC<CityProps> = ({
   zoneId,
   zoneName,
-  setCurrentZone,
-  setSearchType,
 }) => {
+  const router = useRouter()
   const handleCitySelect = () => {
-    setCurrentZone({ zoneId, zoneName });
-    setSearchType("ServiceSearch");
+    router.push({
+      pathname:"/service-search",
+      query:{
+        zoneId: zoneId,
+        zoneName: zoneName,
+      }
+    }
+      );
   };
 
   return (

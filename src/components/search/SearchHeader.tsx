@@ -1,31 +1,20 @@
+import { useRouter } from "next/router";
 import { FaAngleRight } from "react-icons/fa";
 import { SearchHeaderProps } from "types";
 
 const SearchHeader: React.FC<SearchHeaderProps> = ({
-  searchType,
-  onBackButtonClick,
+  headerTitle,
 }) => {
-  const setHeaderText = () => {
-    switch (searchType) {
-      case "ServiceSearch": {
-        return "جستجوی خدمت";
-      }
-
-      case "CitySearch": {
-        return "جستجوی شهر";
-      }
-
-      case "CLOSED":
-        return "";
-    }
-  };
-
+  const router = useRouter()
+  const onBackButtonClick = () => {
+    router.back();
+  }
   return (
     <div className="relative flex items-center justify-center py-6">
       <button className="absolute right-2" onClick={onBackButtonClick}>
         <FaAngleRight size="22" />
       </button>
-      <p className="text-lg font-bold"> {setHeaderText()} </p>
+      <p className="text-lg font-bold"> {headerTitle} </p>
     </div>
   );
 };

@@ -2,13 +2,9 @@ import { useEffect, useState } from "react";
 import FullPageWrapper from "./FullPageWrapper";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import City from "./City";
-import { CitySearchProps, ZoneListProps } from "types";
+import { ZoneListProps } from "types";
 
-const CitySearch: React.FC<CitySearchProps> = ({
-  searchType,
-  setSearchType,
-  setCurrentZone,
-}) => {
+const CitySearch = () => {
   const [inputValue, setInputValue] = useState("");
   const [filteredZoneList, setFilteredZoneList] = useState([]);
   const [zoneList, setZoneList] = useState([]);
@@ -42,8 +38,7 @@ const CitySearch: React.FC<CitySearchProps> = ({
 
   return (
     <FullPageWrapper
-      onBackButtonClick={() => setSearchType("ServiceSearch")}
-      searchType={searchType}
+      headerTitle="جستجوی شهر"
     >
       <div className="flex items-center rounded-lg border border-gray-200 p-3">
         <HiOutlineLocationMarker
@@ -65,8 +60,6 @@ const CitySearch: React.FC<CitySearchProps> = ({
             key={id}
             zoneId={id}
             zoneName={name}
-            setCurrentZone={setCurrentZone}
-            setSearchType={setSearchType}
           />
         ))}
       </div>
