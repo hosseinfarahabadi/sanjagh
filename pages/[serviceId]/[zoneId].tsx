@@ -56,5 +56,6 @@ return {
   props: {
     serviceData,
   },
+  revalidate: 18000,
 };
 }
