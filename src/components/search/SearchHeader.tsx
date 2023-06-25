@@ -4,10 +4,15 @@ import { SearchHeaderProps } from "types";
 
 const SearchHeader: React.FC<SearchHeaderProps> = ({
   headerTitle,
+  route,
 }) => {
   const router = useRouter()
   const onBackButtonClick = () => {
-    router.back();
+    if (route) {
+      router.push(route);
+    } else {
+      router.back();
+    }
   }
   return (
     <div className="relative flex items-center justify-center py-6">

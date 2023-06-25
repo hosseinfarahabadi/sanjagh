@@ -29,6 +29,7 @@ export type FullPageWrapperProps = {
   // onBackButtonClick: () => void;
   children: string | JSX.Element | JSX.Element[];
   headerTitle: string;
+  route?: string | null;
 };
 export type SearchInputProps = {
   serviceList: {
@@ -56,6 +57,7 @@ export type SearchItemProps = {
 };
 export type SearchHeaderProps = {
   headerTitle: string;
+  route?: string | null;
   // onBackButtonClick: MouseEventHandler<HTMLButtonElement>;
 };
 export type CityProps = {
@@ -67,13 +69,13 @@ export type CityProps = {
 export type OutlineButtonProps = {
   onClick: MouseEventHandler<HTMLButtonElement>;
 };
-type ServiceData = {
+export type ServiceData = {
   zoneId: string;
   serviceId: string;
   text: string;
-}|null
+}
 export type ServicePageProps = {
-  serviceId: string;
-  zoneId: string;
+  // serviceId: string;
+  // zoneId: string;
   serviceData: ServiceData;
 };

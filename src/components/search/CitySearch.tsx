@@ -30,6 +30,7 @@ const CitySearch = () => {
     fetch("/api/zones")
       .then((res) => res.json())
       .then((zoneList) => {
+        console.log(zoneList)
         setZoneList(zoneList);
         setFilteredZoneList(zoneList);
       })
