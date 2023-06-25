@@ -1,4 +1,4 @@
-import { GetStaticProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { ServicePageProps } from 'types';
 
 const ServicePage: NextPage<ServicePageProps> = ({ serviceId, zoneId, serviceData }) => {
@@ -13,20 +13,20 @@ const ServicePage: NextPage<ServicePageProps> = ({ serviceId, zoneId, serviceDat
   );
 };
 export default ServicePage;
-export async function getStaticPaths() {
-  // Define the paths to pre-render based on available data
-  const paths = [
-    { params: { id1: '1d1', id2: '1d2' } },
-    // Add more paths as needed
-  ];
 
-  return { paths, fallback: false };
-}
+export const getStaticPaths: GetStaticPaths = async () => {
+    const paths = [
+      { params: { serviceId: '1', zoneId: '1' } },
+    ];
+  
+    return { paths, fallback: false };
+  };
 
 export const getStaticProps: GetStaticProps<ServicePageProps> = async ({ params }) => {
+    if (!params || !params.serviceId || !params.zoneId) {
+        return { notFound: true };
+      }
   const { serviceId, zoneId }:any = params;
-
-  // Fetch data from the API using the id1 and id2 as query parameters
   const response = await fetch(`/api/page?serviceId=${serviceId}&zoneId=${zoneId}`);
   const serviceData = await response.json();
 
